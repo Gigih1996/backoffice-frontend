@@ -7,13 +7,16 @@ import { AppComponent } from './app.component';
 import { BodyComponent } from './body/body.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-// import { ProductsComponent } from './products/products.component';
 import { StatisticsComponent } from './statistics/statistics.component';
-// import { CoupensComponent } from './coupens/coupens.component';
 import { PagesComponent } from './pages/pages.component';
 import { MediaComponent } from './media/media.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SublevelMenuComponent } from './sidenav/sublevel-menu.component';
+import { LoginComponent } from './modules/auth/login/login.component';
+import { EmployeesComponent } from './employees/employees.component';
+import { FormsModule } from '@angular/forms';
+import { EmployeeCreateComponent } from './employee-create/employee-create.component';
+import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 
 @NgModule({
   declarations: [
@@ -22,16 +25,20 @@ import { SublevelMenuComponent } from './sidenav/sublevel-menu.component';
     SidenavComponent,
     DashboardComponent,
     StatisticsComponent,
-    // CoupensComponent,
     PagesComponent,
     MediaComponent,
     SettingsComponent,
-    SublevelMenuComponent
+    SublevelMenuComponent,
+    LoginComponent,
+    EmployeesComponent,
+    EmployeeCreateComponent,
+    EmployeeEditComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

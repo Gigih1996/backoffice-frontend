@@ -1,0 +1,6 @@
+.table th {
+    cursor: pointer;
+  }
+  .pagination .page-item .page-link.active {
+    background-color: #07E3D0;
+  }

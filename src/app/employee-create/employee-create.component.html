@@ -1,0 +1,94 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title">Employees - Create</h5>
+            <button class="btn btn-dark" routerLink="/employees"><i class="fas fa-backspace"></i> Back</button>
+        </div>
+        <div class="card-body">
+            <div class="form">
+                <div class="row">
+                    <div class="col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="username" class="fw-bold">Username<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="Input type username..">
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="username" class="fw-bold">First Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="Input type firstname..">
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row my-3">
+                    <div class="col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="lastname" class="fw-bold">Last Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="Input type lastname..">
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="email" class="fw-bold">Email<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="Input type email..">
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="birthdate" class="fw-bold">Birthdate<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" placeholder="Input type birthdate..">
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="basicsalary" class="fw-bold">Basic Salary<span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" placeholder="Input type basic salary..">
+                        </div>
+                    </div>
+                    
+                </div>
+    
+                <div class="row my-3">
+                    <div class="col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="status" class="fw-bold">Status<span class="text-danger">*</span></label>
+                            <select class="form-select">
+                                <option value="" selected hidden>--- Choose Status ---</option>
+                                <option *ngFor="let item of statusEmployee" value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="group" class="fw-bold">Group<span class="text-danger">*</span></label>
+                            <select class="form-select">
+                                <option value="" selected hidden>--- Choose Status ---</option>
+                                <option *ngFor="let item of group" value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <div class="form-group">
+                            <label for="description" class="fw-bold">Description<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="Input type description..">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-3">
+                    <div class="col-12 col-md-12 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-md btn-success btn-block"><i class="fas fa-plus"></i> Save Employee</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
