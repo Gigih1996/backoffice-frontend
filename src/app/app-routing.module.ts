@@ -16,7 +16,7 @@ import { EmployeeCreateComponent } from './employee-create/employee-create.compo
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 
   { path: 'login', component: LoginComponent },
 
