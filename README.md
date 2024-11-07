@@ -19,14 +19,12 @@ npm install
 ng serve
 
 
-### Fitur :
+## Fitur
+- **Manage Employees**: Mengelola data karyawan.
+- **Create Employee**: Menambah data karyawan baru.
+- **View Employee**: Melihat detail informasi karyawan.
+- **Delete Employee**: Menghapus data karyawan (dengan konfirmasi).
 
-Manage Employees: Mengelola data karyawan.
-Create Employee: Menambah data karyawan baru.
-View Employee: Melihat detail informasi karyawan.
-Delete Employee: Menghapus data karyawan (dengan konfirmasi).
-markdown
-Copy code
 
 ### Tambahkan "allowedCommonJsDependencies" di angular.json
 apabila tidak tersedia di angular.json saat install npm
