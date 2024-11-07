@@ -5,87 +5,168 @@
             <button class="btn btn-dark" routerLink="/employees"><i class="fas fa-backspace"></i> Back</button>
         </div>
         <div class="card-body">
-            <div class="form">
+            <div class="form" [formGroup]="FormCreate" >
                 <div class="row">
                     <div class="col-6 col-md-6">
                         <div class="form-group">
                             <label for="username" class="fw-bold">Username<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" placeholder="Input type username..">
+                            <input type="text" class="form-control" formControlName="username"
+                                placeholder="Input type username..">
+                            <p class="text-danger"
+                                *ngIf="FormCreate.get('username')?.hasError('required') && FormCreate.get('username')?.touched">
+                                Username is required.
+                            </p>
                         </div>
                     </div>
+
                     <div class="col-6 col-md-6">
                         <div class="form-group">
-                            <label for="username" class="fw-bold">First Name<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" placeholder="Input type firstname..">
+                            <label for="firstName" class="fw-bold">First Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" formControlName="firstName"
+                                placeholder="Input type firstname..">
+                            <p class="text-danger"
+                                *ngIf="FormCreate.get('firstName')?.hasError('required') && FormCreate.get('firstName')?.touched">
+                                First name is required.
+                            </p>
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="row my-3">
                     <div class="col-6 col-md-6">
                         <div class="form-group">
-                            <label for="lastname" class="fw-bold">Last Name<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" placeholder="Input type lastname..">
+                            <label for="lastName" class="fw-bold">Last Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" formControlName="lastName"
+                                placeholder="Input type lastname..">
+                            <p class="text-danger"
+                                *ngIf="FormCreate.get('lastName')?.hasError('required') && FormCreate.get('lastName')?.touched">
+                                Last name is required.
+                            </p>
                         </div>
                     </div>
+
                     <div class="col-6 col-md-6">
                         <div class="form-group">
                             <label for="email" class="fw-bold">Email<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" placeholder="Input type email..">
+                            <input type="text" class="form-control" formControlName="email"
+                                placeholder="Input type email..">
+                            <p class="text-danger"
+                                *ngIf="FormCreate.get('email')?.hasError('required') && FormCreate.get('email')?.touched">
+                                Email is required.
+                            </p>
+                            <p class="text-danger"
+                                *ngIf="FormCreate.get('email')?.hasError('email') && FormCreate.get('email')?.touched">
+                                Please enter a valid email.
+                            </p>
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="row">
                     <div class="col-6 col-md-6">
                         <div class="form-group">
-                            <label for="birthdate" class="fw-bold">Birthdate<span class="text-danger">*</span></label>
-                            <input type="date" class="form-control" placeholder="Input type birthdate..">
+                            <label for="birthDate" class="fw-bold">Birthdate<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" formControlName="birthDate"
+                                placeholder="Input type birthdate..">
+                            <p class="text-danger"
+                                *ngIf="FormCreate.get('birthDate')?.hasError('required') && FormCreate.get('birthDate')?.touched">
+                                Birthdate is required.
+                            </p>
+                            <p *ngIf="FormCreate.get('birthDate')?.hasError('futureDate') && FormCreate.get('birthDate')?.touched" class="text-danger">
+                                Birth date cannot be in the future.
+                              </p>
                         </div>
                     </div>
+
                     <div class="col-6 col-md-6">
                         <div class="form-group">
-                            <label for="basicsalary" class="fw-bold">Basic Salary<span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" placeholder="Input type basic salary..">
+                            <label for="basicSalary" class="fw-bold">Basic Salary<span
+                                    class="text-danger">*</span></label>
+                            <input type="number" class="form-control" formControlName="basicSalary"
+                                placeholder="Input type basic salary..">
+                            <p class="text-danger"
+                                *ngIf="FormCreate.get('basicSalary')?.hasError('required') && FormCreate.get('basicSalary')?.touched">
+                                Basic salary is required.
+                            </p>
+                            <p class="text-danger"
+                                *ngIf="FormCreate.get('basicSalary')?.hasError('pattern') && FormCreate.get('basicSalary')?.touched">
+                                Basic Salary must be a number.
+                            </p>
                         </div>
                     </div>
-                    
                 </div>
-    
+
                 <div class="row my-3">
                     <div class="col-6 col-md-6">
                         <div class="form-group">
                             <label for="status" class="fw-bold">Status<span class="text-danger">*</span></label>
-                            <select class="form-select">
+                            <select class="form-select" formControlName="status">
                                 <option value="" selected hidden>--- Choose Status ---</option>
-                                <option *ngFor="let item of statusEmployee" value="{{item.id}}">{{item.name}}</option>
+                                <option *ngFor="let item of statusEmployee" [value]="item.id">{{item.name}}</option>
                             </select>
+                            <p class="text-danger"
+                                *ngIf="FormCreate.get('status')?.hasError('required') && FormCreate.get('status')?.touched">
+                                Status is required.
+                            </p>
                         </div>
                     </div>
-    
+
                     <div class="col-6 col-md-6">
-                        <div class="form-group">
-                            <label for="group" class="fw-bold">Group<span class="text-danger">*</span></label>
-                            <select class="form-select">
-                                <option value="" selected hidden>--- Choose Status ---</option>
-                                <option *ngFor="let item of group" value="{{item.id}}">{{item.name}}</option>
-                            </select>
+                        <!-- CUSTOM SELECT DROPDOWN -->
+                        <label for="group" class="fw-bold">Group<span class="text-danger"></span></label>
+
+                        <div class="wrapper-custom" [ngClass]="{'active': isActive}">
+                            <div class="select-btn" (click)="toggleDropdownGroup()">
+                                <span *ngIf="!selectedGroup">All Group</span>
+                                <span *ngIf="selectedGroup">{{ selectedGroup.name }}</span>
+                                <i class="fas fa-sort-down"></i>
+                            </div>
+
+                            <div class="content-custom" *ngIf="isActive">
+                                <div class="search-custom">
+                                    <i class="fas fa-search" style="position: absolute; left: 16px; bottom: 10px;"></i>
+                                    <input type="text" placeholder="Search" [formControl]="searchTerm">
+                                </div>
+
+                                <ul class="options-custom">
+                                    <li *ngFor="let item of filteredGroups" (click)="selectGroup(item)"
+                                        [class.selected]="item === selectedGroup">
+                                        {{ item.name }}
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
+                        <!-- END CUSTOM SELECT DROPDOWN -->
+
+                        <p class="text-danger"
+                            *ngIf="FormCreate.get('group')?.hasError('required') && FormCreate.get('group')?.touched">
+                            Group is required.
+                        </p>
+
                     </div>
+
                 </div>
-    
+
                 <div class="row">
                     <div class="col-12 col-md-12">
                         <div class="form-group">
-                            <label for="description" class="fw-bold">Description<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" placeholder="Input type description..">
+                            <label for="description" class="fw-bold">Description<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" formControlName="description"
+                                placeholder="Input type description..">
+                            <p class="text-danger"
+                                *ngIf="FormCreate.get('description')?.hasError('required') && FormCreate.get('description')?.touched">
+                                Description is required.
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <div class="row my-3">
                     <div class="col-12 col-md-12 d-flex justify-content-end">
-                        <button type="submit" class="btn btn-md btn-success btn-block"><i class="fas fa-plus"></i> Save Employee</button>
+                        <button type="submit" (click)="CreateCompany()" [disabled]="!FormCreate.valid" class="btn btn-md btn-success btn-block">
+                            <i class="fas fa-plus"></i> Save Employee
+                        </button>
                     </div>
                 </div>
             </div>

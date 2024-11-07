@@ -14,9 +14,11 @@ import { SettingsComponent } from './settings/settings.component';
 import { SublevelMenuComponent } from './sidenav/sublevel-menu.component';
 import { LoginComponent } from './modules/auth/login/login.component';
 import { EmployeesComponent } from './employees/employees.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel, NgModelGroup } from '@angular/forms';
 import { EmployeeCreateComponent } from './employee-create/employee-create.component';
 import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

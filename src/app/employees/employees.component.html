@@ -35,9 +35,24 @@
                 <td>{{ employee.lastName }}</td>
                 <td>{{ employee.email }}</td>
                 <td>{{ employee.basicSalary | currency:"Rp." }}</td>
-                <td>{{ employee.group }}</td>
+                <!-- <td>{{ employee.group }}</td> -->
+                <td>
+                  <ng-container *ngIf="employee.group === '1'">HRD</ng-container>
+                  <ng-container *ngIf="employee.group === '2'">IT Support</ng-container>
+                  <ng-container *ngIf="employee.group === '3'">Infokom</ng-container>
+                  <ng-container *ngIf="employee.group === '4'">Web Application</ng-container>
+                  <ng-container *ngIf="employee.group === '5'">Mobile Application</ng-container>
+                  <ng-container *ngIf="employee.group === '6'">Network Engineer</ng-container>
+                  <ng-container *ngIf="employee.group === '7'">DevOps</ng-container>
+                  <ng-container *ngIf="employee.group === '8'">Cyber Security</ng-container>
+                  <ng-container *ngIf="employee.group === '9'">Finance</ng-container>
+                  <ng-container *ngIf="employee.group === '10'">Datawarehouse</ng-container>
+                </td>
                 <td>{{ employee.birthDate | date: 'dd MMMM, yyyy' : 'id-ID' }}</td>
-                <td>{{ employee.status }}</td>
+                <td>
+                  <ng-container *ngIf="employee.status === '1'">Active</ng-container>
+                  <ng-container *ngIf="employee.status === '2'">Inactive</ng-container>
+                </td>
                 <td>
                   <button class="btn btn-warning btn-sm me-2" (click)="onEdit(employee)">Edit</button>
                   <button class="btn btn-danger btn-sm" (click)="onDelete(employee)">Delete</button>
