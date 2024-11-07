@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title">Employee Detail</h5>
+            <button class="btn btn-dark" routerLink="/employees"><i class="fas fa-backspace"></i> Back</button>
+        </div>
+        <div class="card-body">
+            <div class="form" [formGroup]="FormView">
+                <div class="row">
+                    <div class="col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="username" class="fw-bold">Username</label>
+                            <input type="text" class="form-control" formControlName="username" placeholder="Input type username..." [disabled]="true">
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="firstName" class="fw-bold">First Name</label>
+                            <input type="text" class="form-control" formControlName="firstName" placeholder="Input type firstname..." [disabled]="true">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-3">
+                    <div class="col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="lastName" class="fw-bold">Last Name</label>
+                            <input type="text" class="form-control" formControlName="lastName" placeholder="Input type lastname..." [disabled]="true">
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="email" class="fw-bold">Email</label>
+                            <input type="text" class="form-control" formControlName="email" placeholder="Input type email..." [disabled]="true">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="birthDate" class="fw-bold">Birthdate</label>
+                            <input type="date" class="form-control" formControlName="birthDate" placeholder="Input type birthdate..." [disabled]="true">
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="basicSalary" class="fw-bold">Basic Salary</label>
+                            <input type="text" class="form-control" formControlName="basicSalary" placeholder="Input type basic salary..." [disabled]="true">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-3">
+                    <div class="col-6 col-md-6">
+                        <div class="form-group">
+                            <label for="status" class="fw-bold">Status</label>
+                            <input type="text" formControlName="status" class="form-control" [disabled]="true">
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-6">
+                        <label for="group" class="fw-bold">Group</label>
+                        <input type="text" formControlName="group" class="form-control" [disabled]="true">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <div class="form-group">
+                            <label for="description" class="fw-bold">Description</label>
+                            <input type="text" class="form-control" formControlName="description" placeholder="Input type description..." [disabled]="true">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

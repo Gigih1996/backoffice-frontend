@@ -13,6 +13,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { AuthService } from './service/auth.service';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeCreateComponent } from './employee-create/employee-create.component';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -27,10 +28,9 @@ const routes: Routes = [
         children: [
           {path: '', component: EmployeesComponent},
           {path: 'create', component: EmployeeCreateComponent},
+          {path: 'detail/:id', component: EmployeeDetailComponent},
         ]
       },
-      { path: 'employees-create', component: EmployeeCreateComponent },
-      { path: 'employees/detail/:id', component: EmployeesComponent },
       {
         path: 'products',
         loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface Employee {
+  id:any;
   username: string;
   firstName: string;
   lastName: string;
@@ -46,7 +48,10 @@ export class EmployeesComponent implements OnInit {
     { id: '2', name: 'Inactive' },
   ]
 
-  constructor() { }
+  employee: any;
+
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
 
@@ -77,6 +82,7 @@ export class EmployeesComponent implements OnInit {
 
       // Push new employee data with all fields included
       this.employees.push({
+        id: `${i}`,
         username: `user${i}`,
         firstName: `FirstName${i}`,
         lastName: `LastName${i}`,
@@ -144,9 +150,28 @@ export class EmployeesComponent implements OnInit {
     return this.filteredEmployees.slice(startIndex, startIndex + this.itemsPerPage);
   }
 
-  onEdit(employee: Employee): void {
-    alert(`Edit action on ${employee.username}`);
-    // Code for actual edit action can be added here
+  onView(index: any): void {
+    console.log("Selected index:", index);
+
+    // Mengambil array employee yang sudah disimpan di localStorage
+    const employees = JSON.parse(localStorage.getItem('employeesManage') || '[]');
+
+    // Mengambil employee berdasarkan index yang dipilih
+    const selectedEmployee = employees[index];
+
+    if (selectedEmployee) {
+      // Menyimpan objek employee yang dipilih dalam localStorage
+      localStorage.setItem('selectedEmployeeIndex', JSON.stringify(selectedEmployee));
+      console.log("Employee data saved to localStorage:", selectedEmployee);
+      this.router.navigate(['/employees/detail', selectedEmployee.id]);
+
+      // Jika Anda ingin melakukan navigasi ke halaman detail, Anda bisa menggunakan router
+      // this.router.navigate(['/employees/detail', selectedEmployee.id]);
+    } else {
+      console.error('Employee not found at index:', index);
+    }
+
+    // this.router.navigate(['/employees/detail', index]);
   }
 
   onDelete(employee: Employee): void {
