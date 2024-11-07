@@ -56,7 +56,9 @@
                   <button class="btn btn-warning btn-sm me-2" (click)="onView(i)">
                     <i class="far fa-eye"></i> View Detail
                   </button>
-                  <button class="btn btn-danger btn-sm" (click)="onDelete(employee)"><i class="far fa-trash-alt"></i> Delete</button>
+                  <button class="btn btn-danger btn-sm" (click)="onDelete(employee, i)">
+                    <i class="far fa-trash-alt"></i> Delete
+                  </button>
                 </td>
               </tr>
             </tbody>

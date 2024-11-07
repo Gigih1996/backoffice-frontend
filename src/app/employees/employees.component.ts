@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 interface Employee {
   id:any;
@@ -174,9 +175,38 @@ export class EmployeesComponent implements OnInit {
     // this.router.navigate(['/employees/detail', index]);
   }
 
-  onDelete(employee: Employee): void {
-    alert(`Delete action on ${employee.username}`);
-    // Code for actual delete action can be added here
+  onDelete(employee: Employee, index: number): void {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: `You will delete the employee: ${employee.username}`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Delete action: remove from 'employeesManage' in localStorage
+        let employees = JSON.parse(localStorage.getItem('employeesManage') || '[]');
+        
+        // Hapus employee berdasarkan index
+        employees.splice(index, 1);
+        
+        // Simpan kembali data yang sudah diperbarui ke localStorage
+        localStorage.setItem('employeesManage', JSON.stringify(employees));
+        
+        // Update tampilan atau lakukan operasi lain setelah penghapusan
+        Swal.fire(
+          'Deleted!',
+          `Employee ${employee.username} has been deleted.`,
+          'success'
+        );
+        this.employees = employees;
+        // Optionally, refresh the list or update the view to reflect the change
+        // this.paginatedEmployees = employees; // Atau mekanisme lain yang Anda pakai untuk memperbarui tampilan
+      }
+    });
   }
 
 }

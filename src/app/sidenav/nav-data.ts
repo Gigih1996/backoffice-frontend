@@ -17,7 +17,7 @@ export const navbarData: INavbarData[] = [
             label: 'Management Employee'
          },
          {
-            routeLink: 'employee/create',
+            routeLink: 'employees/create',
             label: 'Create Employee'
          }
       ]
