@@ -18,8 +18,13 @@ npm install
 ### 3. Jalankan aplikasi dengan perintah:
 ng serve
 
+## 4. Login
+username: Admin,
+password: admin1234
+
 
 ## Fitur
+- **Login**: Login Employee.
 - **Manage Employees**: Mengelola data karyawan.
 - **Create Employee**: Menambah data karyawan baru.
 - **View Employee**: Melihat detail informasi karyawan.

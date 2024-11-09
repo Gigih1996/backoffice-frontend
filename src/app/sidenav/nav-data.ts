@@ -21,21 +21,7 @@ export const navbarData: INavbarData[] = [
             label: 'Create Employee'
          }
       ]
-   },
-
-   {
-      routeLink: 'setting',
-      icon: 'fal fa-cog',
-      label: 'settings',
-      expanded: false,
-      items: [
-         {
-            routeLink: '',
-            label: 'Logout',
-            onClick: 'logout'
-         },
-      ]
-   },
+   }
 
    // {
    //    routeLink: 'products',

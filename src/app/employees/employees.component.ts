@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 interface Employee {
-  id:any;
+  id: any;
   username: string;
   firstName: string;
   lastName: string;
@@ -28,6 +28,8 @@ export class EmployeesComponent implements OnInit {
   sortKey: string = 'username';
   sortDirection: 'asc' | 'desc' = 'asc';
   searchQuery: string = '';
+  usernameQuery:string = '';
+  emailQuery: string = '';
   Math = Math;
   totalPages: number = 0;
 
@@ -70,7 +72,8 @@ export class EmployeesComponent implements OnInit {
 
 
     // this.generateDummyData(100); // Generate 100 dummy records
-    this.filteredEmployees = [...this.employees]; // Initialize the filtered data
+    // this.filteredEmployees = [...this.employees]; // Initialize the filtered data
+    this.filteredEmployees = this.employees;
     this.totalPages = Math.ceil(this.filteredEmployees.length / this.itemsPerPage);
   }
 
@@ -128,17 +131,20 @@ export class EmployeesComponent implements OnInit {
     });
   }
 
-  // Filtering function
   filterEmployees(): void {
-    const query = this.searchQuery ? this.searchQuery.toLowerCase() : ''; // Ensure the query is always a string
+    const query = this.searchQuery ? this.searchQuery.toLowerCase() : '';
+  
+    // Filter daftar karyawan berdasarkan username atau email yang mengandung query
     this.filteredEmployees = this.employees.filter(employee =>
-      (employee.username.toLowerCase().includes(query)) || // Filter by username
-      (employee.status && employee.status.toLowerCase().includes(query)) // Filter by status, check if status exists
+      (!query || employee.username.toLowerCase().includes(query) || employee.email.toLowerCase().includes(query))
     );
-
-    // Recalculate total pages after filtering
+  
+    // Hitung total halaman berdasarkan hasil filter
     this.totalPages = Math.ceil(this.filteredEmployees.length / this.itemsPerPage);
-    this.currentPage = 1; // Reset to page 1 after filtering
+    this.currentPage = 1;
+  
+    // Ambil halaman pertama dari hasil filter
+    // this.paginateEmployees();
   }
 
   // Pagination function
@@ -189,13 +195,13 @@ export class EmployeesComponent implements OnInit {
       if (result.isConfirmed) {
         // Delete action: remove from 'employeesManage' in localStorage
         let employees = JSON.parse(localStorage.getItem('employeesManage') || '[]');
-        
+
         // Hapus employee berdasarkan index
         employees.splice(index, 1);
-        
+
         // Simpan kembali data yang sudah diperbarui ke localStorage
         localStorage.setItem('employeesManage', JSON.stringify(employees));
-        
+
         // Update tampilan atau lakukan operasi lain setelah penghapusan
         Swal.fire(
           'Deleted!',

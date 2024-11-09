@@ -21,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 import { LayoutComponent } from './layout/layout.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { LayoutComponent } from './layout/layout.component';
     EmployeeEditComponent,
     EmployeeDetailComponent,
     LayoutComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
