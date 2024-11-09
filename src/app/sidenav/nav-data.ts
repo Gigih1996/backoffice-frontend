@@ -23,6 +23,20 @@ export const navbarData: INavbarData[] = [
       ]
    },
 
+   {
+      routeLink: 'setting',
+      icon: 'fal fa-cog',
+      label: 'settings',
+      expanded: false,
+      items: [
+         {
+            routeLink: '',
+            label: 'Logout',
+            onClick: 'logout'
+         },
+      ]
+   },
+
    // {
    //    routeLink: 'products',
    //    icon: 'fal fa-box-open',
@@ -90,16 +104,5 @@ export const navbarData: INavbarData[] = [
    // },
 
 
-   {
-      routeLink: 'setting',
-      icon: 'fal fa-cog',
-      label: 'settings',
-      expanded: false,
-      items: [
-         {
-            routeLink: 'login',
-            label: 'Logout'
-         },
-      ]
-   },
+   
 ]

@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-
 interface SideNavToggle {
   screenWidth: number;
   collapsed: boolean;
 }
 
+
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-layout',
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.css']
 })
-export class AppComponent {
-  title = 'BackOffice';
+export class LayoutComponent {
+
 
   isSideNavCollapsed = false;
   screenWidth = 0;
@@ -19,6 +19,4 @@ export class AppComponent {
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;
   }
-
-  isLoggedIn = false;
 }

@@ -5,19 +5,30 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
+  private readonly validUsername = 'admin';
+  private readonly validPassword = 'admin1234';
+
   constructor() {}
 
-  // Contoh sederhana, misal menggunakan token di localStorage
+  // Metode untuk mengecek apakah pengguna sudah login (memeriksa sessionStorage)
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('authToken'); // Akan mengembalikan true jika token ada
+    return !!sessionStorage.getItem('AccountLogin'); // Cek apakah ada sesi yang valid
   }
 
-  // Contoh metode untuk login dan logout
-  login(token: string): void {
-    localStorage.setItem('authToken', token);
+  // Metode untuk login menggunakan username dan password hardcoded
+  login(username: string, password: string): boolean {
+    // Cek kecocokan username dan password dengan data hardcoded
+    if (username === this.validUsername && password === this.validPassword) {
+      // Simpan informasi login di sessionStorage
+      sessionStorage.setItem('AccountLogin', JSON.stringify({ username, password }));
+      return true; // Login berhasil
+    } else {
+      return false; // Login gagal
+    }
   }
 
+  // Metode untuk logout
   logout(): void {
-    localStorage.removeItem('authToken');
+    sessionStorage.removeItem('AccountLogin'); // Menghapus sesi login
   }
 }

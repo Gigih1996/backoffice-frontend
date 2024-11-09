@@ -14,29 +14,32 @@ import { AuthService } from './service/auth.service';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeCreateComponent } from './employee-create/employee-create.component';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+import { LayoutComponent } from './layout/layout.component';
+import { authGuard } from './service/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-
   { path: 'login', component: LoginComponent },
-
   {
     path: '',
+    component: LayoutComponent, // layout utama
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'employees',
+      {
+        path: 'employees',
+        canActivate: [authGuard],
         children: [
-          {path: '', component: EmployeesComponent},
-          {path: 'create', component: EmployeeCreateComponent},
-          {path: 'detail/:id', component: EmployeeDetailComponent},
+          { path: '', component: EmployeesComponent },
+          { path: 'create', component: EmployeeCreateComponent },
+          { path: 'detail/:id', component: EmployeeDetailComponent },
         ]
       },
-      {
+      { 
         path: 'products',
         loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
       },
       { path: 'statistics', component: StatisticsComponent },
-      {
+      { 
         path: 'coupens',
         loadChildren: () => import('./coupens/coupens.module').then(m => m.CoupensModule)
       },

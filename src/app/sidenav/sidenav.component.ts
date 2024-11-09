@@ -3,6 +3,7 @@ import { navbarData } from './nav-data';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { fadeInOut, INavbarData, leave } from './helper';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -46,8 +47,11 @@ export class SidenavComponent implements OnInit {
     }
   }
 
-  constructor(public router: Router){}
-
+  constructor(
+    public router: Router,
+    private authService: AuthService
+  ){}
+  
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
     console.log(this.screenWidth)
@@ -81,6 +85,13 @@ export class SidenavComponent implements OnInit {
         }
       }
     }
+  }
+
+  // Fungsi logout: hapus sessionStorage dan redirect ke login
+  logout(): void {
+    console.log('ok')
+    this.authService.logout(); // Hapus session dengan AuthService
+    this.router.navigate(['/login']); // Redirect ke halaman login
   }
 
 }

@@ -8,19 +8,41 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="mb-4">
-                            <h3>Sign In Back Office</h3>
+                            <h3>Sign In Back To Office</h3>
                             <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur
                                 adipisicing.</p>
                         </div>
-                        <form>
+                        <form [formGroup]="FormLogin" (ngSubmit)="Login()" autocomplete="off">
                             <div class="form-group first">
-                                <input type="text" placeholder="Username" class="form-control" id="username">
-                            </div>
-                            <div class="form-group last mb-4">
-                                <input type="Password" placeholder="Password" class="form-control" id="password">
+                                <input type="text" placeholder="Username" class="form-control" formControlName="username">
                             </div>
 
-                            <button type="submit" class="btn btn-md btn-primary">Log In</button>
+                            <div class="form-group last input-group mb-3">
+                                <input [type]="hidePassword ? 'password' : 'text'" class="form-control"
+                                  formControlName="password" placeholder="Password" autocomplete="on">
+                                <div class="input-group-text custom-icon-eye">
+                                  <i class="fas" [ngClass]="[hidePassword ? 'fa-eye-slash' : 'fa-eye', 'eye-color']"
+                                    (click)="togglePasswordVisibility()"></i>
+                                </div>
+                              </div>
+
+                            <p 
+                                class="text-danger" 
+                                *ngIf="FormLogin.get('username')?.hasError('required') && FormLogin.get('username')?.touched"
+                            >
+                              Username is required
+                            </p>
+
+                            <p 
+                                class="text-danger" 
+                                *ngIf="FormLogin.get('password')?.hasError('required') && FormLogin.get('password')?.touched"
+                            >
+                              Password is required
+                            </p>
+
+                            <button type="submit" class="btn btn-md btn-primary" [disabled]="!FormLogin.valid">
+                                <i class="fas fa-sign-in-alt"></i> Log In
+                            </button>
                         </form>
                     </div>
                 </div>

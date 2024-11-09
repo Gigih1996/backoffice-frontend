@@ -296,3 +296,11 @@ h2 {
     background-color: #7e0cf5;
     opacity: .2;
 }
+
+
+.custom-icon-eye {
+    border-radius: 0px;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
