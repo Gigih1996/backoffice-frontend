@@ -19,8 +19,8 @@ npm install
 ng serve
 
 ## 4. Login
-username: Admin,
-password: admin1234
+- **username**: Admin
+- **password**: admin1234
 
 
 ## Fitur
